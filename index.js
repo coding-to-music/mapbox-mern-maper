@@ -11,19 +11,20 @@ const port = process.env.PORT || 4000;
 
 const app = express();
 
+const MONGODB_URI = process.env.MONGODB_URI;
+
 // app.use(express.static(path.join(__dirname, 'client/build')));
 
-mongoose.connect(
-  process.env.MONGODB_URI,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    if (err) throw err;
-    console.log("DB Connected Successfully");
-  }
-);
+mongoose
+  .connect(MONGODB_URI)
+  .then((x) => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
+  })
+  .catch((err) => {
+    console.error("Error connecting to mongo: ", err);
+  });
 
 app.use(helmet());
 app.use(morgan("common"));
@@ -34,6 +35,12 @@ app.get("/", (req, res) => {
   res.json({
     message: "You are server",
   });
+});
+
+// Answer API requests.
+app.get("/api", function (req, res) {
+  res.set("Content-Type", "application/json");
+  res.send('{"message":"Hello from the custom server!"}');
 });
 
 app.use("/api/entry", entry);
@@ -50,6 +57,12 @@ if (process.env.NODE_ENV === "production") {
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
+// app.listen(port, () => {
+//   console.log(`Listining at http://localhost:${port}`);
+// });
+
+// server
 app.listen(port, () => {
-  console.log(`Listining at http://localhost:${port}`);
+  // console.log(`Listening on port ${PORT}`);
+  console.log(`💥 Application is listening on port http://localhost:${port}`);
 });
