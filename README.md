@@ -118,6 +118,9 @@ heroku create mapbox-mern-maper
 ```java
 heroku config:set
 
+heroku config:set MONGODB_URI="mongodb+srv://<userid>:<password>@cluster0.zadqe.mongodb.net/mapbox-mern-maper?retryWrites=true&w=majority"
+
+
 heroku config:set PUBLIC_URL="https://mapbox-mern-maper.herokuapp.com"
 ```
 
