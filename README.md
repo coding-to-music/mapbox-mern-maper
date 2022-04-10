@@ -140,16 +140,7 @@ npm run deploy
 git push heroku
 ```
 
-## Error:
-
-```java
-2022-04-09T03:12:56.076028+00:00 app[web.1]: ls: cannot access '/app/build/static/js/*.js': No such file or directory
-2022-04-09T03:12:56.076252+00:00 app[web.1]: Error injecting runtime env: bundle not found '/app/build/static/js/*.js'. See: https://github.com/mars/create-react-app-buildpack/blob/master/README.md#user-content-custom-bundle-location
-2022-04-09T03:12:56.253505+00:00 app[web.1]: Starting log redirection...
-2022-04-09T03:12:56.253698+00:00 app[web.1]: Starting nginx...
-```
-
-Attempted this:
+### Heroku config
 
 ```java
 heroku config:set JS_RUNTIME_TARGET_BUNDLE=./client/build/static/js/*.js
