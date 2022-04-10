@@ -6,11 +6,16 @@ import EntryForm from "./EntryForm";
 import TotalEntries from "./TotalEntries";
 
 import "./Map.css";
-import "mapbox-gl/dist/mapbox-gl.css";
+// import "mapbox-gl/dist/mapbox-gl.css";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
-require("dotenv").config();
+// const path = require("path");
 
-let MAPBOX_TOKEN = process.env.MAPBOX_API_ACCESS_TOKEN;
+// require("dotenv").config();
+
+// let MAPBOX_TOKEN = process.env.MAPBOX_API_ACCESS_TOKEN;
+
+let MAPBOX_TOKEN =
+  "pk.eyJ1IjoiYWJoMSIsImEiOiJja2VjbHFoem4wMmljMnJrZjRsbmFvb3VjIn0.Xyik0uOLDrB_JxXxIo2auw";
 
 console.log("MAPBOX_TOKEN=", MAPBOX_TOKEN);
 
